@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>eCommerce Store</title>
+        <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/product.css' %}">
+
+        <link rel="stylesheet" href="{% static 'owl/dist/assets/owl.carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'owl/dist/assets/owl.theme.default.css' %}">
+</head>
+<body>
+       
+        <!-- carousel -->
+
+        <div class="container mt-4">
+                <div class="row">
+                        <div class="col-md-12 text-center text-success">
+                                <h2>Product</h2>
+                        </div>
+                </div>
+        </div>
+
+        <div class="container mt-3">
+                <div class="row">
+                        <div class="owl-carousel owl-theme">
+                                <div class="item">
+                                        <div class="card">
+                                                <img src="{% static 'images/img.png' %}" alt="...">
+                                                <div class="card-body">
+                                                        <h4>T-Shirt 1</h4>
+                                                        <h6>$ <span>23</span></h6>
+                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi cumque facilis nostrum blanditiis quas eligendi cupiditate similique sequi beatae error dolore quia, vitae placeat tenetur repellat aliquid laboriosam dignissimos nulla?</p>
+                                                        <button class="btn btn-sm btn-primary">Buy</button>
+                                                </div>
+                                        </div>
+                                </div>
+
+<!-- 2 -->
+<div class="item">
+                <div class="card">
+                        <img src="{% static 'images/img.png' %}" alt="...">
+                        <div class="card-body">
+                                <h4>T-Shirt 1</h4>
+                                <h6>$ <span>23</span></h6>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi cumque facilis nostrum blanditiis quas eligendi cupiditate similique sequi beatae error dolore quia, vitae placeat tenetur repellat aliquid laboriosam dignissimos nulla?</p>
+                                <button class="btn btn-sm btn-primary">Buy</button>
+                        </div>
+                </div>
+        </div>
+
+
+        <div class="item">
+                        <div class="card">
+                                <img src="{% static 'images/img.png' %}" alt="...">
+                                <div class="card-body">
+                                        <h4>T-Shirt 1</h4>
+                                        <h6>$ <span>23</span></h6>
+                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi cumque facilis nostrum blanditiis quas eligendi cupiditate similique sequi beatae error dolore quia, vitae placeat tenetur repellat aliquid laboriosam dignissimos nulla?</p>
+                                        <button class="btn btn-sm btn-primary">Buy</button>
+                                </div>
+                        </div>
+                </div>
+
+
+                <div class="item">
+                                <div class="card">
+                                        <img src="{% static 'images/img.png' %}" alt="...">
+                                        <div class="card-body">
+                                                <h4>T-Shirt 1</h4>
+                                                <h6>$ <span>23</span></h6>
+                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi cumque facilis nostrum blanditiis quas eligendi cupiditate similique sequi beatae error dolore quia, vitae placeat tenetur repellat aliquid laboriosam dignissimos nulla?</p>
+                                                <button class="btn btn-sm btn-primary">Buy</button>
+                                        </div>
+                                </div>
+                        </div>
+                
+                        <div class="item">
+                                        <div class="card">
+                                                <img src="{% static 'images/img.png' %}" alt="...">
+                                                <div class="card-body">
+                                                        <h4>T-Shirt 1</h4>
+                                                        <h6>$ <span>23</span></h6>
+                                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi cumque facilis nostrum blanditiis quas eligendi cupiditate similique sequi beatae error dolore quia, vitae placeat tenetur repellat aliquid laboriosam dignissimos nulla?</p>
+                                                        <button class="btn btn-sm btn-primary">Buy</button>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="item">
+                                                <div class="card">
+                                                        <img src="{% static 'images/img.png' %}" alt="...">
+                                                        <div class="card-body">
+                                                                <h4>T-Shirt 1</h4>
+                                                                <h6>$ <span>23</span></h6>
+                                                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi cumque facilis nostrum blanditiis quas eligendi cupiditate similique sequi beatae error dolore quia, vitae placeat tenetur repellat aliquid laboriosam dignissimos nulla?</p>
+                                                                <button class="btn btn-sm btn-primary">Buy</button>
+                                                        </div>
+                                                </div>
+                                        </div>
+
+                        </div>
+                </div>
+        </div>
+
+       
+        <!-- end -->
+
+        <!-- bootstrap js jquery popper -->
+        <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static 'node_modules/popper.js/dist/popper.min.js' %}" ></script>
+        <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}" ></script>
+        <script src="{% static 'owl/dist/owl.carousel.js' %}"></script>
+
+        <script>
+                        $('.owl-carousel').owlCarousel({
+                                loop:true,
+                                margin:10,
+                                nav:true,
+                                responsive:{
+                                    0:{
+                                        items:1
+                                    },
+                                    600:{
+                                        items:3
+                                    },
+                                    1000:{
+                                        items:5
+                                    }
+                                }
+                            })
+        </script>
+</body>
+</html>

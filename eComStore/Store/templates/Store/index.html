@@ -1,19 +1,71 @@
+{% extends 'Store/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>eCommerce Store</title>
-        <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
-</head>
-<body>
+{% block title %} eCommerce Store {% endblock title %}
 
-        <h2>Hello World</h2>
+        {% block content %}
+        <!-- carousel -->
+
+        <!-- <div class="container mt-4">
+                        <div class="row">
+                                <div class="col-md-12 text-center text-success">
+                                        <h2>Product</h2>
+                                </div>
+                        </div>
+                </div> -->
         
-        <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
-        <script src="{% static 'node_modules/popper.js/dist/popper.min.js' %}" ></script>
-        <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}" ></script>
-</body>
-</html>
+                <div class="container mt-3">
+                        <h1 class="text-danger font-weight-bold">Hot Deals</h1>
+                        <div class="row">
+                                <div class="owl-carousel owl-theme">
+                                        {% for item in product %}
+                                        <div class="item">
+                                                <div class="card">
+                                                        <img src="/media/{{item.product_image}}" class="card-img-top img-fluid" style="width: 250px; height:200px;" alt="...">
+                                                        <div class="card-body">
+                                                                <h4>{{item.product_name}}</h4>
+                                                                <h6 class="text-danger">$<span>{{item.product_price}}</span></h6>
+                                                                <p>{{item.product_desc_sum}}</p>
+                                                                <button class="btn btn-sm btn-outline-primary">Buy</button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        {% endfor %}
+        
+      
+        
+                                </div>
+                        </div>
+                </div>
+
+
+                <div class="container">
+                        <!-- start of 2nd slides -->
+                        {% for product, range, no_sldies in all_product %}
+                        <h2 class="font-weight-bold ">Latest <span class="text-danger">{{product.0.product_category}}</span> </h2>
+                                <div class="row p-3">
+                                                <div class="owl-carousel owl-theme">
+                                                        {% for item in product %}
+                                                        <div class="item">
+                                                                <div class="card">
+                                                                        <img src="/media/{{item.product_image}}" class="card-img-top img-fluid" style="width: 250px; height:200px;" alt="...">
+                                                                        <div class="card-body">
+                                                                                <h4>{{item.product_name}}</h4>
+                                                                                <h6 class="text-danger">$<span>{{item.product_price}}</span></h6>
+                                                                                <p>{{item.product_desc_sum}}</p>
+                                                                                <button class="btn btn-sm btn-outline-primary">Buy</button>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                        {% endfor %}
+                        
+                      
+                        
+                                                </div>
+                                        </div>
+                        {% endfor %}
+                </div>
+        
+               
+                <!-- end -->
+
+       {% endblock %}
