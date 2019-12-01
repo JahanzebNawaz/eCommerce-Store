@@ -8,6 +8,6 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('tracker', views.tracker, name='tracker'),
     path('search/', views.search, name='search'),
-    path('product/', views.product, name='product'),
+    path('product/<int:g_id>', views.product, name='product'),
     path('checkout/', views.checkout, name='checkout'),    
 ]

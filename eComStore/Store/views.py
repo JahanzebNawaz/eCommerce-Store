@@ -8,10 +8,7 @@ from math import ceil
 def index(request):
         url = 'Store/index.html'
         products = Product.objects.all()
-        # n = len(products)
-        # no_slides = n//4 + ceil((n/4)-(n//4))
-
-        # all_products = [[products, range(1, no_slides), no_slides], [products, range(1, no_slides), no_slides]]
+       
 
         all_products = []
         catprods = Product.objects.values('product_category', 'id')
@@ -33,20 +30,27 @@ def about(request):
 
 
 def contact(request):
-        return HttpResponse("Contact Page")
-
+        url = 'Store/contact.html'
+        return render(request, url)
 
 def tracker(request):
-        return HttpResponse("tracker Page")
+        url = 'Store/tracker.html'
+        return render(request, url)
 
 
 def search(request):
-        return HttpResponse("search Page")
+        url = 'Store/search.html'
+        return render(request, url)
 
 
-def product(request):
-        return HttpResponse("product Page")
+def product(request, g_id):
+        ''' fetch product using the id'''
+        product = Product.objects.filter(id=g_id)
+        
+        url = 'Store/productview.html'        
+        return render(request, url, {'product': product[0]})
 
-
+ 
 def checkout(request):
-        return HttpResponse("checkout Page")
+        url = 'Store/about.html'
+        return render(request, url)

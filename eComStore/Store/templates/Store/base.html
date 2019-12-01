@@ -14,7 +14,7 @@
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-                <a class="navbar-brand" href="#">eCom Store</a>
+                <a class="navbar-brand text-danger font-weight-bold" href="/">eCom Store</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                 </button>
@@ -22,38 +22,39 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                <a class="nav-link" href="/about">About Us</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link" href="/contact">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/tracker">Tracker</a>
+                </li>
+               
+               
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
                 </form>
+                <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+                sagittis lacus vel augue laoreet rutrum faucibus.">
+                        Cart(<span id="cart">0</span>)
+                </button>
+                
+                
         </div>
         </nav>
 
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
                 <div class="col-md-5 p-lg-5 mx-auto my-5">
                           <h1 class="display-4 font-weight-bold text-danger ">eCom Store</h1>
-                          <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-                          <a class="btn btn-outline-danger" href="#">Coming soon</a>
+                          <p class="lead font-weight-normal"> <b>Deals </b> and <b> Promotions </b>
+                                        Shop Today’s Deals, Lightning Deals, and limited-time discounts</p>
+                          <a class="btn btn-outline-danger" href="/">Discount Offer</a>
                 </div>
                 <div class="product-device shadow-sm d-none d-md-block"></div>
                 <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
@@ -65,7 +66,8 @@
 
         <!-- bootstrap js jquery popper -->
         <script src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
-        <script src="{% static 'node_modules/popper.js/dist/popper.min.js' %}" ></script>
+        <!-- <script src="{% static 'node_modules/popper.js/dist/popper.min.js' %}" ></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}" ></script>
         <script src="{% static 'owl/dist/owl.carousel.js' %}"></script>
 
@@ -86,6 +88,31 @@
                                     }
                                 }
                             })
+
+
+
+                            
+                            if(localStorage.getItem('cart') == null){
+                                    var cart = {};
+                            } else {
+                                    cart = JSON.parse(localStorage.getItem('cart'))
+                                    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+                            }
+
+                            $('.cart').click(function(){
+                                    var idstr = this.id.toString();
+                                    if (cart[idstr] != undefined){
+                                            cart[idstr] = cart[idstr] +1;
+                                    } else {
+                                            cart[idstr] = 1;
+                                    }
+                                    console.log(cart)
+                                    localStorage.setItem('cart', JSON.stringify(cart));
+                                    
+                            });
+
+                            $('#popcart').popover();
+                            document.getElementById("popcart").setAttribute('data-content', '<p>Cart Products</p>');
         </script>
 </body>
 </html>
