@@ -1,14 +1,31 @@
 {% extends 'Store/base.html' %}
 {% load static %}
-{% block title %} About Us - eCome Store {% endblock title %}
+{% block title %} Checkout Items - eCome Store {% endblock title %}
 
 {% block content %}
 <div class="container my-4">
+	{% if messages %}
+	{% for msg in messages %}
+	<div class="alert alert-{{msg.tags}}" role="alert">
+		{{msg}}
+	</div>
+	{% endfor %}
+	{% endif %}
 	<h2>Step 1 - Shopping Cart Items</h2>
 	<div>
 		<ul class="list-group" id="items">
 
 		</ul>
+
+		<nav aria-label="breadcrumb ">
+			<ol class="breadcrumb mt-4">
+				<li class="breadcrumb-item active" aria-current="page">
+					Your Cart Total amount is <b class="text-dark"> $<span
+							id="totalPrice"></span></b>
+				</li>
+			</ol>
+		</nav>
+
 	</div>
 
 	<hr>
@@ -16,6 +33,7 @@
 	<form accept="/checkout/" method="POST">
 		{% csrf_token %}
 		<input type="hidden" name="itemsJson" id="itemsJson">
+		<input type="hidden" name="amount" id="amount">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="inputEmail4">Email</label>
@@ -55,7 +73,7 @@
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Place Order</button>
+		<button type="submit" class="btn btn-primary" onclick="submitOrder()">Place Order</button>
 	</form>
 </div>
 
@@ -69,6 +87,7 @@
 	}
 	console.log(cart);
 	var sum = 0;
+	var totoalprice = 0;
 	if ($.isEmptyObject(cart)) {
 		//if object empty
 		mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`;
@@ -79,7 +98,9 @@
 		for (item in cart) {
 			let name = cart[item][1];
 			let qty = cart[item][0];
+			let itemprice = cart[item][2];
 			sum = sum + qty;
+			totoalprice = totoalprice + qty * itemprice;
 			mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
 				${name}
 				<span class="badge badge-primary badge-pill">${qty}</span>
@@ -89,34 +110,23 @@
 	}
 
 	document.getElementById('cart').innerHTML = sum;
+	document.getElementById('totalPrice').innerHTML = totoalprice;
+	$('#itemsJson').val(JSON.stringify(cart));
+
+	function submitOrder() {
+		localStorage.clear();
+
+	}
+	$('#amount').val($('#totalPrice').html());
 </script>
+
+{% if thank %}
+<script>
+	alert('Success full submited Order. your tracking Id {{id}}. Use it to track your order. ')
+</script>
+{% endif %}
 
 
 {% endblock js %}
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-a
