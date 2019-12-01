@@ -22,10 +22,13 @@
                                                 <div class="card">
                                                         <img src="/media/{{item.product_image}}" class="card-img-top img-fluid" style="width: 250px; height:200px;" alt="...">
                                                         <div class="card-body">
-                                                                <h4>{{item.product_name}}</h4>
+                                                                <h4 id="nameprod{{item.id}}">{{item.product_name}}</h4>
                                                                 <h6 class="text-danger">$<span>{{item.product_price}}</span></h6>
                                                                 <p>{{item.product_desc_sum}}</p>
+
+                                                                <span id="divprod{{item.id}}" class="divprod">
                                                                 <button id="prod{{item.id}}" class="btn btn-sm btn-outline-primary cart">Add to Cart</button>
+                                                                </span>
                                                                 <a href="/product/{{item.id}}">
                                                                         <button id="v{{item.id}}" class="btn btn-primary btn-sm mx-1 cart"> View</button>
                                                                 </a>
@@ -52,10 +55,12 @@
                                                                 <div class="card">
                                                                         <img src="/media/{{item.product_image}}" class="card-img-top img-fluid" style="width: 250px; height:200px;" alt="...">
                                                                         <div class="card-body">
-                                                                                <h4>{{item.product_name}}</h4>
+                                                                                <h4 id="nameprod{{item.id}}">{{item.product_name}}</h4>
                                                                                 <h6 class="text-danger">$<span>{{item.product_price}}</span></h6>
                                                                                 <p>{{item.product_desc_sum}}</p>
+                                                                                <span id="divprod{{item.id}}" class="divprod">
                                                                                 <button id="prod{{item.id}}" class="btn btn-sm btn-outline-primary cart">Add to cart</button>
+                                                                                </span>
                                                                                 <a href="/product/{{item.id}}">
                                                                                         <button id="v{{item.id}}" class="btn btn-primary btn-sm mx-1 cart"> View</button>
                                                                                 </a>

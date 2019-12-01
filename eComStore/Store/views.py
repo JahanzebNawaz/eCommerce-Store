@@ -1,6 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Product
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
+from .models import Product, Contact
+from .forms import ContactForm
 # Create your views here.
 from math import ceil
 
@@ -31,12 +33,28 @@ def about(request):
 
 def contact(request):
         url = 'Store/contact.html'
-        return render(request, url)
+        if request.method=="POST":
+                name = request.POST.get('name', '')
+                email = request.POST.get('email', '')
+                phone = request.POST.get('phone', '')
+                desc = request.POST.get('desc', '')
+                contact = Contact(name=name, email=email, phone=phone, desc=desc)
+                
+                if contact:
+                        contact.save()
+                        messages.success(request, 'Message Sent Successfully!')
+                        return HttpResponseRedirect('/contact/')
+                else:
+                        messages.error(request, 'Error submiting Message')
+                        return render(request, url)
+        else:
+                return render(request, url)
+
 
 def tracker(request):
         url = 'Store/tracker.html'
-        return render(request, url)
 
+        return render(request, url)
 
 def search(request):
         url = 'Store/search.html'
